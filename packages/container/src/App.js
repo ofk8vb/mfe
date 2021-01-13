@@ -1,5 +1,6 @@
 import React from 'react';
 import MarketingApp from './components/MarketingApp'
+// This is the main app ( container app itself )
 // mount functions display the marketingApp at the specified(passed in as argument) html element
 
 
