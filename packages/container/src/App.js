@@ -6,7 +6,7 @@ import MarketingApp from './components/MarketingApp'
 
 export default()=>{
     return <div>
-        <h1>Hi there my friend, hope to figure out aws!</h1>
+        <h1>Hi there my friend, hope to figure out aws :*!</h1>
         <h1/>
         {/* // the ref.current argument passed into the mount function back at MarketingApp.js */}
         {/* // gets the parent <div></div> element */}
