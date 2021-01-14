@@ -18,7 +18,7 @@ const devConfig = {
             remotes: {
                 marketing:'marketing@http://localhost:8081/remoteEntry.js'
             },
-            // webpack will automatically deal with shared modules
+            // webpack will automatically deal with shared modules (optimization)
             shared:packageJson.dependencies
         })
     ]
