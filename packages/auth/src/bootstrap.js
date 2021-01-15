@@ -41,7 +41,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
 // If we are in development and in isolation,
 // call mount immediately
 if (process.env.NODE_ENV === "development") {
-  const devRoot = document.querySelector("#_marketing-dev-root");
+  const devRoot = document.querySelector("#_auth-dev-root");
   // presence of html element inside devRoot means truthy value
   if (devRoot) {
       // we pass in a defaultHistory object which is a browser router in development so
