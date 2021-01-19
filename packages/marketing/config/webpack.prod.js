@@ -8,6 +8,7 @@ const prodConfig = {
     output: {
         filename: '[name].[contenthash].js',
         // adds a path to where to look for the js file (prepends to filename)
+        // remoteEntry.js* for container in production
         publicPath: '/marketing/latest/'
     },
     plugins:[

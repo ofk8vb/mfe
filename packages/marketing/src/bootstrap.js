@@ -5,9 +5,14 @@ import App from "./App";
 
 // Mount function to start up the app
 // renders the App component at given html element
-const mount = (el, { onNavigate, defaultHistory }) => {
+const mount = (el, { onNavigate, defaultHistory,initialPath }) => {
     //defaultHistory will only be provided when running in development
-  const history = defaultHistory || createMemoryHistory();
+  
+  // createMemory history will be provided with an initialPath when the
+  // microfrontend first runs because memoryHistory starts with no path by default
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries:[initialPath]
+  });
 
   // event listener built into history object provided by createMemoryHistory
   // whenever an event of route navigation happens, history.listen(callback) will be calling the provided

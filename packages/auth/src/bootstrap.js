@@ -5,9 +5,11 @@ import App from "./App";
 
 // Mount function to start up the app
 // renders the App component at given html element
-const mount = (el, { onNavigate, defaultHistory }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath,onSignIn }) => {
     //defaultHistory will only be provided when running in development
-  const history = defaultHistory || createMemoryHistory();
+  const history = defaultHistory || createMemoryHistory({
+    initialEntires: [initialPath]
+  });
 
   // event listener built into history object provided by createMemoryHistory
   // whenever an event of route navigation happens, history.listen(callback) will be calling the provided
@@ -20,7 +22,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
 
   // history will be either a memory one or a browser one depending on
   // running mode
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
   // this is to allow children to parent navigation communication
   // we destructure the location property passed by container's history.listen()
@@ -31,6 +33,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
         // we prevent infinite loop by making sure current pathname is different
         // than the one provided by container 
         const { pathname } = history.location;
+        console.log(nextPathname)
         if(pathname !== nextPathname){
             history.push(nextPathname);
         }

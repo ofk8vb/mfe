@@ -1,10 +1,10 @@
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // we take the mount function from the Marketing project that renders it self to the passed in html element
 // reusable with angular, vue etc
-export default () => {
+export default ({onSignIn}) => {
     // we are getting a reference to the html element this method is being displayed inside of on screen i.e. <div> tag etc
     const ref = useRef(null);
 
@@ -17,10 +17,7 @@ export default () => {
         // renders the App file we got from Marketing project into the current html element
         // we are also passing in a onNavigate callback function in an object that will be used to sync up history
         const {onParentNavigate} = mount(ref.current,{
-            // we also pass an initialPath value so
-            // microfrontend apps memory history has a starting value
-            initialPath : history.location.pathname,
-
+            initialPath: history.location.pathname,
             // history.listen() method that will run this onNavigate callback
             // automatically provides a location object as argument to the callback function it runs
             // location object will have a pathname property which tells the last location of the microapp
@@ -38,7 +35,10 @@ export default () => {
                     history.push(nextPathname);
                 // history.push(nextPathname) will navigate the current microapp history to the provided Path
                 }
-                
+            },
+            // or can just be onSignIn
+            onSignIn: () => {
+                onSignIn();
             }
         });
 
